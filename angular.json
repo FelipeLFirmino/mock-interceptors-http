@@ -56,6 +56,14 @@
               "optimization": false,
               "extractLicenses": false,
               "sourceMap": true
+            },
+            "mock": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with":    "src/environments/environment.mock.ts"
+                }
+              ]
             }
           },
           "defaultConfiguration": "production"
@@ -68,6 +76,9 @@
             },
             "development": {
               "buildTarget": "mock-interceptor-demo:build:development"
+            },
+            "mock": {
+              "buildTarget": "mock-interceptor-demo:build:mock"
             }
           },
           "defaultConfiguration": "development"
