@@ -1,7 +1,9 @@
 import { CommonModule } from '@angular/common';
-import { HttpClient } from '@angular/common/http';
 import { Component, inject } from '@angular/core';
 import { UserService } from './services/user.service';
+import { Auth } from './models/auth.model';
+import { MeService} from './services/me.service';
+import { OrganizationModel } from './models/organization.model';
 
 @Component({
   selector: 'app-root',
@@ -12,13 +14,14 @@ import { UserService } from './services/user.service';
 export class AppComponent {
   title = 'mock-interceptor-demo';
 
-  users: { id: number; name: string; }[] = [];
-
+  user:Auth = {name: "", email:""};
+  organizations!: OrganizationModel[];
   
   userService = inject(UserService);
-
+  meService = inject(MeService)
 
   ngOnInit() {
-    this.userService.getUsers().subscribe(us => this.users = us);
+    this.meService.checkUser().subscribe(us => this.user = us);
+    this.meService.getUserOrganizations().subscribe((org) => this.organizations = org)
   }
 }

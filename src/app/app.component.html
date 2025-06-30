@@ -1,5 +1,10 @@
- <h1>Usuários</h1>
-    <ul>
-      <li *ngFor="let u of users">{{ u.name }}</li>
-    </ul>
-  `
+<h1>User: {{user.name}}</h1>
+<h2>UserEmail: {{user.email}}</h2>
+@if(organizations.length > 0){
+@for (organization of organizations; track organization.name) {
+ <h2>{{organization.name}}</h2> 
+ <h2>{{organization.legalName}}</h2>
+ 
+}}@else {
+  <h3>No organizations for this user</h3>
+}
